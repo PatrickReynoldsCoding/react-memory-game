@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 //components
@@ -31,7 +31,34 @@ function App() {
 
   // remember choice
   const handleChoice = (card) => {
-    console.log(card);
+    choice1 ? setChoice2(card) : setChoice1(card);
+    reviewChoices(choice1, choice2);
+    console.log(choice1, choice2);
+  };
+
+  //review choices
+  const reviewChoices = (choice1, choice2) => {
+    if (choice1 && choice2 != null) {
+      matchChecker(choice1, choice2);
+      clearChoices();
+    }
+  };
+
+  //match checker
+  const matchChecker = (choice1, choice2) => {
+    if (choice1.src == choice2.src) {
+      console.log("match");
+    } else {
+      console.log("no match");
+    }
+  };
+
+  // clear choices
+  const clearChoices = (choice1, choice2) => {
+    if (choice1 && choice1 !== null) {
+      setChoice1(null);
+      setChoice2(null);
+    }
   };
 
   return (
