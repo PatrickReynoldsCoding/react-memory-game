@@ -32,15 +32,19 @@ function App() {
   // remember choice
   const handleChoice = (card) => {
     choice1 ? setChoice2(card) : setChoice1(card);
-    reviewChoices(choice1, choice2);
-    console.log(choice1, choice2);
   };
+
+  useEffect(() => {
+    reviewChoices(choice1, choice2);
+  }, [choice1, choice2]);
 
   //review choices
   const reviewChoices = (choice1, choice2) => {
     if (choice1 && choice2 != null) {
       matchChecker(choice1, choice2);
-      clearChoices();
+      clearChoices(choice1, choice2);
+      setTurns(turns + 1);
+      console.log(choice1, choice2, turns);
     }
   };
 
