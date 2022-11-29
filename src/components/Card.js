@@ -8,7 +8,7 @@ export default function Card(props) {
 
   return (
     <div className="card">
-      <div>
+      <div className={props.flipped ? "flipped" : ""}>
         <img className="front" src={props.card.src} alt="card front" />
         <img
           className="back"
