@@ -3,7 +3,7 @@ import "./Card.css";
 
 export default function Card(props) {
   const handleClick = () => {
-    props.handleChoice(props.card);
+    if (props.enabled) props.handleChoice(props.card);
   };
 
   return (
